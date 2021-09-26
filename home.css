@@ -1,0 +1,308 @@
+@import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap');
+
+/* Dark theme */
+.theme-dark {
+	--color: #DDD;
+	--dark: #111;
+	--medium: #222;
+	--light: #333;
+}
+
+/* Light theme */
+.theme-light {
+	--color: #111;
+	--dark: #E3E5E8;
+	--medium: #F2F3F5;
+	--light: #FCFCFC;
+}
+
+/* Both themes */
+:root {
+	--link: #2a8b9d;
+}
+
+body {
+	color: var(--color);
+	background-color: var(--dark);
+	text-align: center;
+	font-family: 'Oxygen', sans-serif;
+	font-weight: 400;
+	margin: 0;
+	height: 100vh;
+	scroll-behavior: smooth;
+
+	/* Hide scroll during animation */
+	overflow: hidden;
+}
+
+body, .header, .box {
+	transition: background-color 0.3s ease;
+}
+
+span, p, h1, h2, h3 {
+	transition: color 0.3s ease;
+}
+
+/* Header */
+.one {
+	font-weight: 700;
+	font-size: 1.75em;
+	margin: 0.25em 0;
+	transition: font-size 0.3s ease;
+}
+
+.two {
+	font-weight: 400;
+	font-size: 1.25em;
+	margin: 0;
+	transition: font-size 0.3s ease;
+}
+
+.header {
+	height: 8em;
+	background-color: var(--medium);
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	transition: height 0.3s ease;
+	position: fixed;
+	padding: 0.25em;
+
+	/* Hide before the animation */
+	visibility: hidden;
+}
+
+.header-logo {
+	height: 2.5em;
+	fill: var(--color);
+	transition: height 0.3s ease;
+}
+
+/* Content */
+.content {
+	padding: 9.5em 1em 1em;
+	visibility: hidden;
+	display: flex;
+	flex-wrap: wrap;
+	flex: 100%;
+}
+
+h1 {
+	font-weight: 700;
+	font-size: 1.5em;
+	margin: 0;
+}
+
+h2 {
+	font-weight: 700;
+	font-size: 1.25em;
+	margin: 0;
+}
+
+a {
+	color: var(--link);
+	text-decoration: none;
+}
+
+.box {
+	margin: 0.75em;
+	border-radius: 0.5em;
+	background-color: var(--light);
+	min-height: 4em;
+	padding: 0.5em;
+	display: flex;
+	flex-direction: column;
+}
+
+.box-footer {
+	margin-top: auto;
+}
+
+article {
+	flex: 66%;
+}
+
+aside {
+	flex: 33%;
+}
+
+@media screen and (min-width: 600px) {
+	article > .box {
+		margin-right: 0.375em;
+	}
+
+	aside > .box {
+		margin-left: 0.375em;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	article, aside {
+		flex: 100%
+	}
+
+	aside > .box:first-child {
+		margin-top: 0;
+	}
+
+	.flex-grid > .box {
+		margin-left: 0.75em !important;
+		margin-right: 0.75em !important;
+	}
+}
+
+article.blog {
+	visibility: hidden;
+	margin-left: 0.375em !important;
+	margin-right: 0.375em !important;
+}
+
+/* Flex grid boxes */
+.flex-grid {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.flex-grid > .box {
+	flex: 30%;
+	margin: 0.375em;
+}
+
+@media screen and (max-width: 600px) {
+	.flex-grid > .box {
+		flex: 100%;
+	}
+}
+
+/* Cover mode */
+.cover {
+	height: 100vh;
+	background-color: var(--medium);
+}
+
+.cover .header {
+	height: 100vh;
+	padding: none;
+	transition: height 0.3s ease;
+}
+
+.cover .header-logo {
+	height: 6em;
+	transition: height 0.3s ease;
+}
+
+.cover .one {
+	font-size: 3.5em;
+	transition: font-size 0.3s ease;
+}
+
+.cover .two {
+	font-size: 2.5em;
+	transition: font-size 0.3s ease;
+}
+
+@media screen and (max-width: 475px) {
+	.cover .one {
+		font-size: 2em;
+	}
+
+	.cover .two {
+		font-size: 1.75em;
+	}
+}
+
+/* Cover animation */
+.split {
+	display: flex;
+}
+
+.split > span {
+	transition: transform 1s ease;
+
+	/* Hide before animation */
+	opacity: 0;
+	animation: fadeIn 2s ease forwards;
+}
+
+.header-logo > use {
+	transform: scale(0);
+	transform-origin: center;
+	transition: transform 1s ease;
+}
+
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+.scroll-button {
+	visibility: hidden;
+	opacity: 0;
+	transition: opacity 0.3s ease;
+	width: 1em;
+	height: 1em;
+	margin-top: 1em;
+	margin-left: -1.5em;
+	border-left: 0.1em solid var(--color);
+	border-bottom: 0.1em solid var(--color);
+	transform: rotate(-45deg);
+	animation: scroll-button 1.5s infinite;
+	box-sizing: border-box;
+}
+
+@keyframes scroll-button {
+	0% {
+		transform: rotate(-45deg) translate(0, 0);
+	}
+	20% {
+		transform: rotate(-45deg) translate(-0.5em, 0.5em);
+	}
+	40% {
+		transform: rotate(-45deg) translate(0, 0);
+	}
+}
+
+/* Footer */
+footer {
+	visibility: hidden;
+}
+
+.settings {
+	user-select: none;
+}
+
+.settings > svg {
+	fill: var(--color);
+	height: 1.25em;
+	width: 1.25em;
+	cursor: pointer;
+}
+
+/* Scrollbar */
+body {
+	scrollbar-width: thin;
+	scrollbar-color: var(--light) var(--medium);
+}
+
+body::-webkit-scrollbar-track {
+	border-radius: 10px;
+	background-color: var(--medium);
+}
+
+body::-webkit-scrollbar {
+	width: 12px;
+	background-color: var(--medium);
+}
+
+body::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	background-color: var(--light);
+}
